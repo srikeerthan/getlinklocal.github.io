@@ -13,8 +13,30 @@
     <title>Link Local - Turn Followers Into Customers | Coming Soon</title>
     <meta name="description" content="Turn followers into customers with Link Local. One link, every local need. The link-in-bio tool built specifically for local businesses. Coming December 2025.">
     
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://getlinklocal.com/">
+    <meta property="og:title" content="Link Local - Turn Followers Into Customers">
+    <meta property="og:description" content="One link, every local need. The link-in-bio tool built specifically for local businesses.">
+    <meta property="og:image" content="https://getlinklocal.com/logo-social.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://getlinklocal.com/">
+    <meta property="twitter:title" content="Link Local - Turn Followers Into Customers">
+    <meta property="twitter:description" content="One link, every local need. The link-in-bio tool built specifically for local businesses.">
+    <meta property="twitter:image" content="https://getlinklocal.com/logo-social.png">
+    
+    <!-- 
+    IMPORTANT: Upload these logo files to your GitHub repository:
+    1. logo-horizontal.png - Your horizontal logo (link local with icon)
+    2. logo-icon.png - Just the location pin icon (for favicon)
+    3. logo-social.png - A 1200x630px version for social media sharing
+    -->
+    
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📍%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="apple-touch-icon" href="logo-icon.png">
     
     <style>
         * {
@@ -66,10 +88,45 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .logo:hover {
+            opacity: 0.8;
+        }
+        
+        .logo img {
+            height: 36px;
+            width: auto;
+            display: block;
+            max-width: 200px;
+        }
+        
+        /* Fallback text while image loads */
+        .logo-fallback {
             font-size: 24px;
             font-weight: bold;
             color: var(--navy);
-            text-decoration: none;
+            display: none;
+        }
+        
+        .logo img:not([src]), .logo img[src=""] {
+            display: none;
+        }
+        
+        .logo img:not([src]) ~ .logo-fallback,
+        .logo img[src=""] ~ .logo-fallback {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .logo img {
+                height: 28px;
+                max-width: 160px;
+            }
         }
         
         .social-links {
@@ -503,7 +560,10 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <a href="/" class="logo">📍 Link Local</a>
+                <a href="/" class="logo">
+                    <img src="logo-horizontal.png" alt="Link Local - Turn Followers Into Customers" />
+                    <span class="logo-fallback">Link Local</span>
+                </a>
                 <div class="social-links">
                     <a href="https://instagram.com/getlinklocal" target="_blank" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -531,7 +591,7 @@
             <span class="badge">Coming December 2025</span>
             <h1>Turn Followers Into Customers</h1>
             <p class="subtitle-primary">One Link, Every Local Need.</p>
-            <p class="subtitle-secondary">The link-in-bio tool built specifically for salons, spas, cafes, and local shops.</p>
+            <p class="subtitle-secondary">The link-in-bio tool built specifically for salons, cafes, and local shops.</p>
             
             <div class="email-form">
                 <div id="success-message" class="success-message">
