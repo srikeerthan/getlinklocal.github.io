@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Link Local - Link-in-Bio for Local Businesses | Coming Soon</title>
+    <meta name="description" content="The link-in-bio tool built specifically for local businesses. Turn Instagram followers into customers. Coming February 2025.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📍%3C/text%3E%3C/svg%3E">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --navy: #1e3a8a;
+            --coral: #ff6b6b;
+            --light-coral: #ff8787;
+            --dark-navy: #1e2a5a;
+            --gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --white: #ffffff;
+            --success: #10b981;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--navy);
+            background-color: #fafafa;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--navy);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--coral);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(255, 107, 107, 0.05) 100%);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: var(--coral);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--navy);
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Email Form */
+        .email-form {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        input, select {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--coral);
+        }
+        
+        button {
+            background: var(--coral);
+            color: var(--white);
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: var(--light-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+        
+        .form-note {
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+        
+        .form-note strong {
+            color: var(--navy);
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: var(--success);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--navy);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            background: var(--light-gray);
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--navy);
+        }
+        
+        .feature p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* Problem Section */
+        .problem {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, var(--light-gray), var(--white));
+        }
+        
+        .problem-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .stat-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .big-stat {
+            font-size: 64px;
+            font-weight: bold;
+            color: var(--coral);
+            margin-bottom: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: var(--white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 60px;
+            color: var(--coral);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--navy);
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--coral);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .big-stat {
+                font-size: 48px;
+            }
+            
+            .social-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">📍 Get Link Local</a>
+                <div class="social-links">
+                    <a href="https://instagram.com/getlinklocal" target="_blank">Instagram</a>
+                    <a href="https://tiktok.com/@getlinklocal" target="_blank">TikTok</a>
+                    <a href="https://twitter.com/getlinklocal" target="_blank">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="badge">Coming February 2025</span>
+            <h1>The Link-in-Bio Tool Built for Local Businesses</h1>
+            <p class="subtitle">Turn your Instagram followers into actual customers with a bio link that works as hard as you do.</p>
+            
+            <div class="email-form">
+                <div id="success-message" class="success-message">
+                    🎉 You're on the list! Check your email for confirmation.
+                </div>
+                <form id="early-access-form" action="https://formspree.io/f/xqaboerv" method="POST">
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="your@email.com" required>
+                        <select name="business_type" required>
+                            <option value="">Business Type</option>
+                            <option value="salon">Salon/Spa</option>
+                            <option value="restaurant">Restaurant/Cafe</option>
+                            <option value="retail">Retail Shop</option>
+                            <option value="fitness">Fitness/Gym</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit">Get Early Access</button>
+                    <p class="form-note">🎁 First 100 businesses get <strong>50% off forever</strong></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="problem-content">
+                <h2 class="section-title">The Problem with Generic Link Tools</h2>
+                <div class="stat-box">
+                    <div class="big-stat">67%</div>
+                    <p>of your Instagram followers want to book appointments, see your menu, or check your hours</p>
+                </div>
+                <p class="section-subtitle">But Instagram only gives you ONE link. Generic tools don't understand what local businesses actually need.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Built Specifically for Your Business</h2>
+            <p class="section-subtitle">Everything you need to convert social media followers into paying customers</p>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📅</div>
+                    <h3>Accept Bookings 24/7</h3>
+                    <p>Let customers book appointments directly from your bio link, even when you're closed</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Showcase Reviews</h3>
+                    <p>Display your best reviews from Google, Yelp, and Facebook in one place</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📍</div>
+                    <h3>Location & Hours</h3>
+                    <p>Make it easy for customers to find you with integrated maps and current hours</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Services & Pricing</h3>
+                    <p>Display your menu, services, or products with clear pricing</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Track Everything</h3>
+                    <p>See what actually drives customers to your business</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Your Brand, Your Way</h3>
+                    <p>Customize everything to match your business personality</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Local Businesses Are Excited</h2>
+            <p class="section-subtitle">Join 50+ businesses already on the waitlist</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p>"Finally! A bio link that understands my salon needs more than just links - we need bookings!"</p>
+                    <div class="testimonial-author">Sarah, Glow Beauty Bar</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Can't wait to stop sending people to different sites for menu, reservations, and reviews"</p>
+                    <div class="testimonial-author">Mike, The Corner Café</div>
+                </div>
+                <div class="testimonial">
+                    <p>"This is exactly what my boutique needs. Instagram is our #1 marketing channel!"</p>
+                    <div class="testimonial-author">Jessica, Bloom Boutique</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Questions? <a href="mailto:hello@getlinklocal.com">hello@getlinklocal.com</a></p>
+            <p>© 2025 Get Link Local. Built with ❤️ for local businesses.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form handling
+        document.getElementById('early-access-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Hide form
+            this.style.display = 'none';
+            
+            // In real implementation, you would submit to your backend here
+            // For now, you can use Formspree or similar service
+            
+            // Optional: Save to localStorage to remember signup
+            localStorage.setItem('getlinklocal_signedup', 'true');
+        });
+        
+        // Check if already signed up
+        if (localStorage.getItem('getlinklocal_signedup')) {
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('early-access-form').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
