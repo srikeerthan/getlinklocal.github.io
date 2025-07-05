@@ -10,8 +10,8 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Local - Link-in-Bio for Local Businesses | Coming Soon</title>
-    <meta name="description" content="The link-in-bio tool built specifically for local businesses. Turn Instagram followers into customers. Coming December 2025.">
+    <title>Link Local - Turn Followers Into Customers | Coming Soon</title>
+    <meta name="description" content="Turn followers into customers with Link Local. One link, every local need. The link-in-bio tool built specifically for local businesses. Coming December 2025.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📍%3C/text%3E%3C/svg%3E">
@@ -122,6 +122,18 @@
             font-size: 14px;
             margin-bottom: 20px;
             font-weight: 500;
+            animation: fadeInDown 0.6s ease both;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         h1 {
@@ -129,21 +141,67 @@
             margin-bottom: 20px;
             color: var(--navy);
             line-height: 1.2;
+            font-weight: 800;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .subtitle {
             font-size: 20px;
             color: var(--gray);
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .subtitle-primary {
+            font-size: 24px;
+            color: var(--coral);
+            font-weight: 600;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease 0.3s both;
+            position: relative;
+        }
+        
+        .subtitle-primary::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--coral);
+            margin: 20px auto 0;
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+        
+        .subtitle-secondary {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
         
         /* Email Form */
         .email-form {
             max-width: 500px;
             margin: 0 auto 30px;
+            animation: fadeInUp 0.8s ease 0.5s both;
         }
         
         .form-group {
@@ -401,11 +459,15 @@
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
-                font-size: 36px;
+                font-size: 32px;
             }
             
-            .subtitle {
-                font-size: 18px;
+            .subtitle-primary {
+                font-size: 20px;
+            }
+            
+            .subtitle-secondary {
+                font-size: 16px;
             }
             
             .section-title {
@@ -467,8 +529,9 @@
     <section class="hero">
         <div class="container">
             <span class="badge">Coming December 2025</span>
-            <h1>The Link-in-Bio Tool Built for Local Businesses</h1>
-            <p class="subtitle">Turn your Instagram followers into actual customers with a bio link that works as hard as you do.</p>
+            <h1>Turn Followers Into Customers</h1>
+            <p class="subtitle-primary">One Link, Every Local Need.</p>
+            <p class="subtitle-secondary">The link-in-bio tool built specifically for salons, spas, cafes, and local shops.</p>
             
             <div class="email-form">
                 <div id="success-message" class="success-message">
@@ -497,6 +560,7 @@
     <section class="mobile-social-section">
         <div class="container">
             <h3>Follow Our Journey</h3>
+            <p style="color: var(--gray); margin-bottom: 20px; font-size: 14px;">Helping local businesses turn followers into customers</p>
             <div class="social-links">
                 <a href="https://instagram.com/getlinklocal" target="_blank" aria-label="Instagram">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -527,6 +591,7 @@
                     <p>of your Instagram followers want to book appointments, see your menu, or check your hours</p>
                 </div>
                 <p class="section-subtitle">But Instagram only gives you ONE link. Generic tools don't understand what local businesses actually need.</p>
+                <p style="font-size: 20px; color: var(--coral); font-weight: 600; margin-top: 30px;">You need one link that handles every local need.</p>
             </div>
         </div>
     </section>
@@ -534,8 +599,8 @@
     <!-- Features Section -->
     <section class="features">
         <div class="container">
-            <h2 class="section-title">Built Specifically for Your Business</h2>
-            <p class="section-subtitle">Everything you need to convert social media followers into paying customers</p>
+            <h2 class="section-title">One Link, Every Local Need</h2>
+            <p class="section-subtitle">Everything you need to turn social media followers into paying customers</p>
             
             <div class="features-grid">
                 <div class="feature">
@@ -576,11 +641,11 @@
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">Local Businesses Are Excited</h2>
-            <p class="section-subtitle">Join 50+ businesses already on the waitlist</p>
+            <p class="section-subtitle">Join 50+ businesses ready to turn their followers into customers</p>
             
             <div class="testimonials-grid">
                 <div class="testimonial">
-                    <p>"Finally! A bio link that understands my salon needs more than just links - we need bookings!"</p>
+                    <p>"Finally! A bio link that actually turns my followers into paying customers - not just website visitors!"</p>
                     <div class="testimonial-author">Sarah, Glow Beauty Bar</div>
                 </div>
                 <div class="testimonial">
@@ -598,6 +663,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
+            <p style="margin-bottom: 10px;"><strong>Link Local</strong> - Turn Followers Into Customers</p>
             <p>Questions? <a href="mailto:hello@getlinklocal.com">hello@getlinklocal.com</a></p>
             <p>© 2025 Link Local. Built with ❤️ for local businesses.</p>
         </div>
