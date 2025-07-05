@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NZJH5342');</script>
-<!-- End Google Tag Manager -->
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NZJH5342');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link Local - Link-in-Bio for Local Businesses | Coming Soon</title>
@@ -95,12 +95,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             color: var(--white);
             transform: translateY(-2px);
         }
-
+        
         .social-links svg {
             width: 18px;
             height: 18px;
             fill: currentColor;
-            color: var(--coral);
         }
         
         /* Hero Section */
@@ -365,7 +364,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 20px 0;
             background: var(--light-gray);
         }
-
+        
         .mobile-social .social-links {
             justify-content: center;
         }
@@ -388,14 +387,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 font-size: 48px;
             }
             
-            .header-content.social-links {
+            .header-content .social-links {
                 display: none;
             }
-
+            
             .mobile-social {
                 display: block;
             }
-
+            
             .hero {
                 padding-top: 100px;
             }
@@ -414,7 +413,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="header-content">
                 <a href="/" class="logo">📍 Link Local</a>
                 <div class="social-links">
-                     <a href="https://instagram.com/getlinklocal" target="_blank" aria-label="Instagram">
+                    <a href="https://instagram.com/getlinklocal" target="_blank" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
                         </svg>
@@ -574,21 +573,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </footer>
 
     <script>
-        // Form handling
-        document.getElementById('early-access-form').addEventListener('submit', function(e) {
+        // Form handling with AJAX
+        document.getElementById('early-access-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Show success message
-            document.getElementById('success-message').style.display = 'block';
+            const formData = new FormData(this);
             
-            // Hide form
-            this.style.display = 'none';
-            
-            // In real implementation, you would submit to your backend here
-            // For now, you can use Formspree or similar service
-            
-            // Optional: Save to localStorage to remember signup
-            localStorage.setItem('linklocal_signedup', 'true');
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('success-message').style.display = 'block';
+                    // Hide form
+                    this.style.display = 'none';
+                    // Save to localStorage
+                    localStorage.setItem('linklocal_signedup', 'true');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error. Please try again.');
+            }
         });
         
         // Check if already signed up
